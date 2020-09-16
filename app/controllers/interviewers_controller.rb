@@ -12,7 +12,7 @@ class InterviewersController < ApplicationController
         @interviewer = Interviewer.new(interviewer_params)
         @inp=Interviewee.where(email: @interviewer.email).count(:email)
         if @inp>0
-            flash.alert="This User can not be a Interviewer as he is an Interviewee "
+            flash.alert="This user can not be a Interviewer as he is an Interviewee "
             render 'new'  
         elsif(@interviewer.save)
           redirect_to @interviewer
