@@ -9,8 +9,12 @@ class IntervieweesController < ApplicationController
         @interviewee=Interviewee.find(params[:id])
     end
     def create
-        @interviewee = Interviewee.new(interviewee_params)   
-        if(@interviewee.save)
+        @interviewee = Interviewee.new(interviewee_params)
+        @inp=Interviewer.where(email: @interviewee.email).count(:email)
+        if @inp>0
+            flash.alert="This User can not be a Interviewee as he is an Interviewer "
+            render 'new'  
+        elsif(@interviewee.save)
           redirect_to @interviewee
         else
           render 'new'

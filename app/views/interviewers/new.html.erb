@@ -1,0 +1,29 @@
+<h3> Adding a New Interviewer</h3>
+<%= form_for :interviewer , html: { multipart: true } , url: interviewers_path(@interviewer) do |f| %>
+   <%if @interviewer.errors.any? %> 
+       <% @interviewer.errors.full_messages.each do |msg| %>
+          <%= msg %><br>
+       <% end %>
+   <% end %>
+   <% flash.each do |type, msg| %>
+      <div>
+      <%= msg %>
+      </div>
+   <% end %> 
+    <p>
+        <%= f.label :Email %><br>
+        <%= f.text_field :email %>
+    </p>
+ 
+    <p>
+        <%= f.label :Name %><br>
+        <%= f.text_field :name %>
+    </p>
+
+
+    
+
+    <p>
+          <%= f.submit :create%>
+    </p>
+<% end %>
