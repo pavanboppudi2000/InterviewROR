@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyText
+  name: MyText
+  clg: MyText
+  cgpa: 1.5
+
+two:
+  email: MyText
+  name: MyText
+  clg: MyText
+  cgpa: 1.5
