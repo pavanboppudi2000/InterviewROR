@@ -6,6 +6,11 @@
         <% end %>
     <% end %> 
     <p>
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %><br>
+      </div>
+    <% end %>
         <%= f.label :Email %><br>
         <%= f.text_field :email %>
     </p>

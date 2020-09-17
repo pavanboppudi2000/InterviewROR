@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email1: MyText
+  email2: MyText
+  st: 2020-09-17 13:51:59
+  end: 2020-09-17 13:51:59
+
+two:
+  email1: MyText
+  email2: MyText
+  st: 2020-09-17 13:51:59
+  end: 2020-09-17 13:51:59
