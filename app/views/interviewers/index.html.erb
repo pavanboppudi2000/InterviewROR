@@ -1,4 +1,5 @@
-<h1>Hello</h1>
+<h1>Interviewer</h1>
+<h2><%=link_to "Add interviewer", new_interviewer_path%></h2>
 <% @interviewer.each do |interviewer|%>
  <%= interviewer.email %>
  <%= interviewer.name %>

@@ -1,15 +1,5 @@
-<h3> Editing Schedule</h3>
-<%= form_for :schedule , html: { multipart: true } , url: schedule_path(@schedule) , method: :patch do |f| %>
-    <%if @schedule.errors.any? %> 
-       <% @schedule.errors.full_messages.each do |msg| %>
-          <%= msg %><br>
-       <% end %>
-    <% end %> 
-    <% flash.each do |type, msg| %>
-      <div>
-      <%= msg %><br>
-      </div>
-    <% end %>
+<h3> Editing Schedule<h3>
+<%= form_for :schedule , url: schedule_path(@schedule),method: :patch do |f| %>
     <p>
         <%= f.label :Interviewer_Email %><br>
         <%= f.text_field :email1 %>
@@ -29,10 +19,8 @@
     </p>
 
 
-    
-
-    <p>
+    <p>  
           <%= f.submit :Edit%>
     </p>
-    <% link_to "Back" , schedules_path %>
+   
 <% end %>

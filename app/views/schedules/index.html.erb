@@ -1,6 +1,6 @@
-<h1>Hi</h1>
+<h2><%= link_to "New Interview" , new_schedule_path%></h2>
 <% @schedule.each do |interviewee|%>
- <h3>Interviewer  :<%= interviewee.email1 %><br>
+    <h3>Interviewer  :<%= interviewee.email1 %><br>
     Interviewee :<%= interviewee.email2 %> </h3>
     Start Time :<%= interviewee.st %><br>
     End Time :<%= interviewee.end %><br><br>

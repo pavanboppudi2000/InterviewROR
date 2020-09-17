@@ -35,7 +35,7 @@ class SchedulesController < ApplicationController
                     @eor=@eor+1
             end
         end
-        @inp4=Schedule.where(email2: @schedule.email1)
+        @inp4=Schedule.where(email2: @schedule.email2)
         @inp4.each do |inp4|
             if inp4.st < @schedule.st
                 if inp4.end > @schedule.st
@@ -58,11 +58,11 @@ class SchedulesController < ApplicationController
         render 'new'
     end
     def edit
-        @schedule=Schedule.find(params[:id])
+       @schedule=Schedule.find(params[:id])
     end
     def update
-        @schedule=Schedule.new(schedule_params)
-        @sch = Schedule.find(params[:id])
+        @exschedule=Schedule.find(params[:id])
+        @schedule=Schedule.new(schedule_params)       
         @inp1=Interviewer.where(email: @schedule.email1).count(:email)
         @inp2=Interviewee.where(email: @schedule.email2).count(:email)
         @eor=0
@@ -79,7 +79,7 @@ class SchedulesController < ApplicationController
         @por=0
         @inp3=Schedule.where(email1: @schedule.email1)
         @inp3.each do |inp3|
-            if inp3.id == @sch.id
+            if inp3.id == @exschedule.id
                 @por=0
             else
                 if inp3.st < @schedule.st
@@ -93,9 +93,9 @@ class SchedulesController < ApplicationController
                 end
             end            
         end
-        @inp4=Schedule.where(email2: @schedule.email1)
+        @inp4=Schedule.where(email2: @schedule.email2)
         @inp4.each do |inp4|
-            if inp4.id == @sch.id
+            if inp4.id == @exschedule.id
                 @por=0
             else
                 if inp4.st < @schedule.st
@@ -112,8 +112,8 @@ class SchedulesController < ApplicationController
         if @eor>0
             @eor=@eor+1
         else
-            if(@sch.update(schedule_params))
-                redirect_to @sch
+            if(@exschedule.update(schedule_params))
+                redirect_to @schedule
                 return 
             end
         end

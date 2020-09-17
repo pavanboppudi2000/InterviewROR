@@ -7,6 +7,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <%= link_to "Home", schedules_path%>
+  <%= link_to "Interviewer", interviewers_path%>
+  <%= link_to "Interviewee", interviewees_path%>
   <body>
     <%= yield %>
   </body>
