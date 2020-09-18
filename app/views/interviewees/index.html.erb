@@ -1,8 +1,9 @@
 <h1>Interviewee</h1>
 <h2><%=link_to "Add Interviewee", new_interviewee_path%></h2>
 <% @interviewee.each do |interviewee|%>
- <%= interviewee.email %>
- <%= interviewee.name %>
- <%= interviewee.clg %>
- <%= interviewee.cgpa %><br><br>
+ <h3>Email :<%= interviewee.email %><br>
+ Name:<%= interviewee.name %><br>
+ College:<%= interviewee.clg %><br>
+ CGPA :<%= interviewee.cgpa %><br><br>
+ <a href=<%= interviewee.resume.url%> target="_blank" >Resume</a><br><br></h3>
 <% end %>

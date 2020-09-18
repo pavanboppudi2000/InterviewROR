@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200917082159) do
+ActiveRecord::Schema.define(version: 20200917181323) do
 
   create_table "interviewees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "email"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 20200917082159) do
     t.float "cgpa", limit: 24
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "resume_file_name"
+    t.string "resume_content_type"
+    t.integer "resume_file_size"
+    t.datetime "resume_updated_at"
   end
 
   create_table "interviewers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

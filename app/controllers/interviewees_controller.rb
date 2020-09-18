@@ -26,6 +26,6 @@ class IntervieweesController < ApplicationController
     end
     private
      def interviewee_params
-        params.require(:interviewee).permit(:email, :name, :cgpa , :clg)
+        params.require(:interviewee).permit(:email, :name, :cgpa , :clg,  :resume)
      end  
 end

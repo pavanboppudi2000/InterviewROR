@@ -7,11 +7,13 @@ class SchedulesController < ApplicationController
     end
     def show
         @schedule=Schedule.find(params[:id])
+        @intee=Interviewee.where(email: @schedule.email2)
     end
     def create
         @schedule = Schedule.new(schedule_params)
         @inp1=Interviewer.where(email: @schedule.email1).count(:email)
         @inp2=Interviewee.where(email: @schedule.email2).count(:email)
+
         @eor=0
         if @inp1<1 || @inp2<1
             if @inp1<1
@@ -117,7 +119,7 @@ class SchedulesController < ApplicationController
                 return 
             end
         end
-        render 'edit'
+        redirect_to edit_schedule_path(@exschedule)
     end
     def destroy
         @schedule=Schedule.find(params[:id])
@@ -126,6 +128,6 @@ class SchedulesController < ApplicationController
     end
     private
      def schedule_params
-        params.require(:schedule).permit(:email1, :email2, :st , :end)
+        params.require(:schedule).permit(:email1, :email2, :st , :end, :resume, :email)
      end
 end

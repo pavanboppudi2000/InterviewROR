@@ -5,14 +5,19 @@
           <%= msg %><br>
         <% end %>
     <% end %> 
-    <p>
+    
     <% flash.each do |type, msg| %>
       <div>
         <%= msg %><br>
       </div>
     <% end %>
+    <p>
         <%= f.label :Email %><br>
         <%= f.text_field :email %>
+    </p>
+    <p>
+        <%= f.label :Resume %><br>
+        <%= f.file_field :resume %>
     </p>
  
     <p>

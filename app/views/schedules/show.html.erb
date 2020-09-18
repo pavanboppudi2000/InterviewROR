@@ -1,5 +1,16 @@
 <h2>Successfull</h2>
-  <%= @schedule.email1 %>
-<%= @schedule.email2%>
- <%= @schedule.st %>
- <%= @schedule.end %>
+  <%= @schedule.email1 %><br>
+<%= @schedule.email2%><br>
+ <%= @schedule.st %><br>
+ <%= @schedule.end %><br>
+ <p>
+ <h2>Interviewee Details</h2>
+ <% @intee.each do |p|%>
+   Name :<%= p.name%><br>
+   Email :<%= p.email%><br>
+   College  :<%= p.clg%><br>
+   CGPA :<%= p.cgpa%><br>
+   <a href=<%=p.resume.url %> target="_blank" >Resume</a>
+
+ <% end %>
+ </p>
