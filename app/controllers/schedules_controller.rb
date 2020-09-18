@@ -15,13 +15,14 @@ class SchedulesController < ApplicationController
         @inp2=Interviewee.where(email: @schedule.email2).count(:email)
 
         @eor=0
+        flash[:notice]=""
         if @inp1<1 || @inp2<1
             if @inp1<1
-              flash.alert="Email 1 is not a valid Interviewer"
+              flash[:notice] << "Email 1 is not a valid Interviewer <br/>"
               @eor=@eor+1
             end
             if @inp2<1 
-              flash.alert="Email 2 is not a valid Interviewee"
+              flash[:notice] << "Email 2 is not a valid Interviewee <br/>"
               @eor=@eor+1
             end          
         end        
@@ -29,11 +30,11 @@ class SchedulesController < ApplicationController
         @inp3.each do |inp3|
             if inp3.st < @schedule.st
                 if inp3.end > @schedule.st
-                    flash.alert="Interviewer is not available"
+                    flash[:notice] << "Interviewer is not available <br />"
                     @eor=@eor+1
                 end
             elsif inp3.st < @schedule.end
-                    flash.alert="Interviewer is not available"
+                    flash[:notice] << "Interviewer is not available <br />"
                     @eor=@eor+1
             end
         end
@@ -41,11 +42,11 @@ class SchedulesController < ApplicationController
         @inp4.each do |inp4|
             if inp4.st < @schedule.st
                 if inp4.end > @schedule.st
-                    flash.alert="Interviewee is not available"
+                    flash[:notice] << "Interviewee is not available <br />"
                     @eor=@eor+1
                 end
             elsif inp4.st< @schedule.end
-                 flash.alert="Interviewee is not available"
+                 flash[:notice] << "Interviewee is not available <br />"
                  @eor=@eor+1
             end
         end
@@ -68,13 +69,14 @@ class SchedulesController < ApplicationController
         @inp1=Interviewer.where(email: @schedule.email1).count(:email)
         @inp2=Interviewee.where(email: @schedule.email2).count(:email)
         @eor=0
+         flash[:notice]=" <br />"
         if @inp1<1 || @inp2<1
             if @inp1<1
-              flash.alert="Email 1 is not a valid Interviewer"
+              flash[:notice] << "Email 1 is not a valid Interviewer <br />"
               @eor=@eor+1
             end
             if @inp2<1 
-              flash.alert="Email 2 is not a valid Interviewee"
+              flash[:notice] << "Email 2 is not a valid Interviewee <br />"
               @eor=@eor+1
             end          
         end        
@@ -86,11 +88,11 @@ class SchedulesController < ApplicationController
             else
                 if inp3.st < @schedule.st
                     if inp3.end > @schedule.st
-                        flash.alert="Interviewer is not available"
+                        flash[:notice] << "Interviewer is not available <br />"
                         @eor=@eor+1
                     end
                 elsif inp3.st < @schedule.end
-                        flash.alert="Interviewer is not available"
+                        flash[:notice] << "Interviewer is not available <br />"
                         @eor=@eor+1
                 end
             end            
@@ -102,11 +104,11 @@ class SchedulesController < ApplicationController
             else
                 if inp4.st < @schedule.st
                     if inp4.end > @schedule.st
-                        flash.alert="Interviewee is not available"
+                        flash[:notice] << "Interviewee is not available <br />"
                         @eor=@eor+1
                     end
                 elsif inp4.st< @schedule.end
-                     flash.alert="Interviewee is not available"
+                     flash[:notice] << "Interviewee is not available <br />"
                      @eor=@eor+1
                 end
             end
