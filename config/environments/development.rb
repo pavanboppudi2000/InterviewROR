@@ -27,7 +27,10 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => '127.0.0.1', :port => 1025 }
   config.action_mailer.raise_delivery_errors = false
+  config.active_job.queue_adapter = :sidekiq
 
   config.action_mailer.perform_caching = false
 

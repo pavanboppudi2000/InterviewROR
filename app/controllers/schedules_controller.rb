@@ -54,6 +54,7 @@ class SchedulesController < ApplicationController
             @eor=@eor+1
         else
             if(@schedule.save)
+                UserMailer.new_interview(@schedule).deliver
                 redirect_to @schedule
                 return 
             end
@@ -117,6 +118,7 @@ class SchedulesController < ApplicationController
             @eor=@eor+1
         else
             if(@exschedule.update(schedule_params))
+                UserMailer.update_interview(@schedule).deliver
                 redirect_to @schedule
                 return 
             end
@@ -125,6 +127,7 @@ class SchedulesController < ApplicationController
     end
     def destroy
         @schedule=Schedule.find(params[:id])
+        UserMailer.delete_interview(@schedule).deliver
         @schedule.destroy
         redirect_to schedules_path
     end
