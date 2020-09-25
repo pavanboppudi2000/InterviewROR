@@ -1,6 +1,11 @@
 class InterviewersController < ApplicationController
+    skip_before_action :verify_authenticity_token
     def index
         @interviewer=Interviewer.all
+        @por=Array[]
+        @por.push("hi")
+        @por.push("you are good")
+        render json: {"content": @interviewer , "eor": @por}
     end
     def new
         @interviewer=Interviewer.new
@@ -9,16 +14,17 @@ class InterviewersController < ApplicationController
         @interviewer=Interviewer.find(params[:id])
     end
     def create
+        @por=Array[]
         @interviewer = Interviewer.new(interviewer_params)
         @inp=Interviewee.where(email: @interviewer.email).count(:email)
         if @inp>0
-            flash.alert="This user can not be a Interviewer as he is an Interviewee "
-            render 'new'  
+            @por.push("This user can not be a Interviewer as he is an Interviewee ")  
         elsif(@interviewer.save)
-          redirect_to @interviewer
-        else
-          render 'new'
+            @por.push("Success")
         end
+        @por.push("hi")
+        @por.push("you are good")
+        render json: {"content": @interviewer , "eor": @por}
     end
     private
      def interviewer_params

@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :interviewees
   resources :interviewers
   resources :schedules
+
+  get 'fine/:id' => 'interviewees#findmail'
    
 end
