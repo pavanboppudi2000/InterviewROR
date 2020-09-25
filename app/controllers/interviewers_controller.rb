@@ -22,8 +22,6 @@ class InterviewersController < ApplicationController
         elsif(@interviewer.save)
             @por.push("Success")
         end
-        @por.push("hi")
-        @por.push("you are good")
         render json: {"content": @interviewer , "eor": @por}
     end
     private

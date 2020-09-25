@@ -2,7 +2,11 @@ class IntervieweesController < ApplicationController
     skip_before_action :verify_authenticity_token
     def index
         @interviewee=Interviewee.all
-        render json: @interviewee
+        @res={}
+        @interviewee.each do |user|
+            @res[user.id]=user.resume.url
+        end
+        render json: {"content": @interviewee, "resumes": @res}
     end
     def new
         @interviewee=Interviewee.new
@@ -19,7 +23,7 @@ class IntervieweesController < ApplicationController
         elsif(@interviewee.save)
             @por.push("success")
         end
-        render json: {"content": @interviewee , "eor": @por}
+        render json: {"content": @interviewee , "eor": @por ,"resume": @interviewee.resume.url}
     end
     def update
     end
@@ -27,10 +31,12 @@ class IntervieweesController < ApplicationController
     end
     def findmail
         @eid=Interviewee.find_by(email: params[:id]+".com")
-        render json: @eid
+        @res={}
+        @res[@eid.id]=@eid.resume.url
+        render json: {"content": @eid, "resumes": @res}
     end
     private
      def interviewee_params
-        params.require(:interviewee).permit(:email, :name, :cgpa , :clg,  :resume)
+        params.permit(:email, :name, :cgpa , :clg,  :resume)
      end  
 end
